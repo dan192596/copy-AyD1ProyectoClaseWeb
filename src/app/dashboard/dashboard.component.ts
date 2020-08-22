@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { AydApiService } from '../_services/ayd-api.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,10 +9,14 @@ import * as Chartist from 'chartist';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private aydService: AydApiService
+  ) { }
 
 
   ngOnInit(): void {
+    this.getUsuarios();
+
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
     const dataDailySalesChart: any = {
@@ -148,6 +153,20 @@ export class DashboardComponent implements OnInit {
       }
     });
     seq2 = 0;
+  }
+
+  getUsuarios(){
+    this.aydService.getUsuarios()
+    .subscribe(
+      (res: any) => this.succes(res), 
+      (res: any) => this.failed(res)
+    );
+  }
+
+  succes(res){
+  }
+
+  failed(res){
   }
 
 }
