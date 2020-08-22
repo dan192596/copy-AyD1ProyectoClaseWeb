@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -13,12 +14,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ExampleComponent } from './example/example.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { Example2Component } from './example2/example2.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { PerfilComponent } from './perfil/perfil.component';
     NavbarComponent,
     SidebarComponent,
     ExampleComponent,
-    PerfilComponent
+    PerfilComponent,
+    Example2Component
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,7 @@ import { PerfilComponent } from './perfil/perfil.component';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
