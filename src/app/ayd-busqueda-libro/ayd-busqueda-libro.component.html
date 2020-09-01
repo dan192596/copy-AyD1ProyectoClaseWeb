@@ -8,7 +8,6 @@
                         <p class="card-category">Listado libros encontrados</p>
                     </div>
                     <div class="card-body">
-
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
@@ -19,28 +18,26 @@
                                     <th>Editorial</th>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr *ngFor="let libro of resultadoBusquedaLibro">
                                         <td>
-                                            1
+                                            {{libro?.idLibro}}
                                         </td>
                                         <td>
-                                            Dakota Rice
+                                            {{libro?.titulo}}
                                         </td>
                                         <td>
-                                            Niger
+                                            {{libro?.autor}}
                                         </td>
                                         <td>
-                                            Oud-Turnhout
+                                            {{libro?.edicion}}
                                         </td>
-                                        <td class="text-primary">
-                                            $36,738
+                                        <td>
+                                            {{libro?.editorial}}
                                         </td>
                                     </tr>                                    
                                 </tbody>
                             </table>
                         </div>
-
-
                     </div>
                 </div>
             </div>

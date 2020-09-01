@@ -14,6 +14,8 @@ export class AydBusquedaLibroComponent implements OnInit {
     private aydAppService: AydAppService
   ) { }
 
+  resultadoBusquedaLibro = [];
+
   ngOnInit(): void {
     this.buscarLibro();    
   }
@@ -30,7 +32,7 @@ export class AydBusquedaLibroComponent implements OnInit {
   }
 
   succesLibros(res){
-
+    this.resultadoBusquedaLibro = res;
   }
 
 }
