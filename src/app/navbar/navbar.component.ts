@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location } from '@angular/common';
+import { AydApiService } from '../_services/ayd-api.service';
+import { AydAppService } from '../_services/ayd-app.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,10 +18,13 @@ export class NavbarComponent implements OnInit {
   private toggleButton: any;
   private sidebarVisible: boolean;
 
+  busqueda;
+
   constructor(
     location: Location,
     private element: ElementRef,
-    private router: Router
+    private router: Router,
+    private aydAppService: AydAppService
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -130,6 +135,21 @@ export class NavbarComponent implements OnInit {
       }
     }
     return 'Dashboard';
+  }
+
+
+
+  buscarLibro(){
+    if(this.busqueda){
+      let b = {
+        titulo : this.busqueda
+      }
+
+      this.aydAppService.setBusquedaLibro(b);
+      this.router.navigated = false;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+      this.router.navigate(["busqueda/libros"]));
+    }
   }
 
 }

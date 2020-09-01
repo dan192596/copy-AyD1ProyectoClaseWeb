@@ -22,6 +22,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ExampleComponent } from './example/example.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { Example2Component } from './example2/example2.component';
+import { AydBusquedaLibroComponent } from './ayd-busqueda-libro/ayd-busqueda-libro.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { Example2Component } from './example2/example2.component';
     SidebarComponent,
     ExampleComponent,
     PerfilComponent,
-    Example2Component
+    Example2Component,
+    AydBusquedaLibroComponent
   ],
   imports: [
     BrowserModule,
