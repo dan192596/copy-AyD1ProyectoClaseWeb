@@ -2,7 +2,6 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location } from '@angular/common';
-import { AydApiService } from '../_services/ayd-api.service';
 import { AydAppService } from '../_services/ayd-app.service';
 
 @Component({

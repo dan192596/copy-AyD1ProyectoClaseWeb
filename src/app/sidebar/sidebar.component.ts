@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AydAppService } from '../_services/ayd-app.service';
+import { Router } from '@angular/router';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -25,7 +27,12 @@ export class SidebarComponent implements OnInit {
 
   menuItems: any[];
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private aydAppService: AydAppService
+  ) { }
+
+  busqueda;
 
   ngOnInit(): void {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
@@ -36,6 +43,19 @@ export class SidebarComponent implements OnInit {
         return false;
     }
     return true;
-}
+  }
+
+  buscarLibro(){
+    if(this.busqueda){
+      let b = {
+        titulo : this.busqueda
+      }
+
+      this.aydAppService.setBusquedaLibro(b);
+      this.router.navigated = false;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+      this.router.navigate(["busqueda/libros"]));
+    }
+  }
 
 }
