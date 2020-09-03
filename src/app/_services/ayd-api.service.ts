@@ -16,4 +16,9 @@ export class AydApiService {
       .pipe();
   }
 
+  getLibros(busqueda): Observable<any> {
+    return this.http.post<any>(`${'/ayd/api/aydws/libro/titulo'}`,busqueda)
+      .pipe();
+  }
+
 }
