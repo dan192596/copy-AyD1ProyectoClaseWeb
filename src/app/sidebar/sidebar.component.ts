@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AydAppService } from '../_services/ayd-app.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogUsuarioComponent } from '../dialog-usuario/dialog-usuario.component';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -29,7 +31,8 @@ export class SidebarComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private aydAppService: AydAppService
+    private aydAppService: AydAppService,
+    private dialog: MatDialog,  
   ) { }
 
   busqueda;
@@ -56,6 +59,17 @@ export class SidebarComponent implements OnInit {
       this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
       this.router.navigate(["busqueda/libros"]));
     }
+  }
+
+  dialogUsuario(){
+    const dialogRef = this.dialog.open(DialogUsuarioComponent,
+      {
+        width: '50%',
+        data: null
+      }
+    );
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
 }

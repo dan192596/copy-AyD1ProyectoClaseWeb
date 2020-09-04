@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location } from '@angular/common';
 import { AydAppService } from '../_services/ayd-app.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogUsuarioComponent } from '../dialog-usuario/dialog-usuario.component';
 
 @Component({
   selector: 'app-navbar',
@@ -23,7 +25,8 @@ export class NavbarComponent implements OnInit {
     location: Location,
     private element: ElementRef,
     private router: Router,
-    private aydAppService: AydAppService
+    private aydAppService: AydAppService,
+    private dialog: MatDialog,  
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -149,6 +152,17 @@ export class NavbarComponent implements OnInit {
       this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
       this.router.navigate(["busqueda/libros"]));
     }
+  }
+
+  dialogUsuario(){
+    const dialogRef = this.dialog.open(DialogUsuarioComponent,
+      {
+        width: '50%',
+        data: null
+      }
+    );
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
 }

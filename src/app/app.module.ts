@@ -14,6 +14,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
@@ -23,6 +25,7 @@ import { ExampleComponent } from './example/example.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { Example2Component } from './example2/example2.component';
 import { AydBusquedaLibroComponent } from './ayd-busqueda-libro/ayd-busqueda-libro.component';
+import { DialogUsuarioComponent } from './dialog-usuario/dialog-usuario.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,11 @@ import { AydBusquedaLibroComponent } from './ayd-busqueda-libro/ayd-busqueda-lib
     ExampleComponent,
     PerfilComponent,
     Example2Component,
-    AydBusquedaLibroComponent
+    AydBusquedaLibroComponent,
+    DialogUsuarioComponent
+  ],
+  entryComponents: [
+    DialogUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +55,8 @@ import { AydBusquedaLibroComponent } from './ayd-busqueda-libro/ayd-busqueda-lib
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
