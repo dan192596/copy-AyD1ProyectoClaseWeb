@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AydAppService } from '../_services/ayd-app.service';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogUsuarioComponent } from '../dialog-usuario/dialog-usuario.component';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -9,11 +13,9 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
-    { path: '/profile', title: 'Perfil',  icon:'person', class: '' },
     { path: '/example', title: 'Ejemplo',  icon:'content_paste', class: '' },
     
-    
-    { path: '/example', title: 'Bitacora',  icon:'unarchive', class: 'active-pro' },
+    { path: '/example2', title: 'Bitacora',  icon:'unarchive', class: 'active-pro' },
 ];
 
 @Component({
@@ -25,7 +27,13 @@ export class SidebarComponent implements OnInit {
 
   menuItems: any[];
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private aydAppService: AydAppService,
+    private dialog: MatDialog,  
+  ) { }
+
+  busqueda;
 
   ngOnInit(): void {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
@@ -36,6 +44,30 @@ export class SidebarComponent implements OnInit {
         return false;
     }
     return true;
-}
+  }
+
+  buscarLibro(){
+    if(this.busqueda){
+      let b = {
+        titulo : this.busqueda
+      }
+
+      this.aydAppService.setBusquedaLibro(b);
+      this.router.navigated = false;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+      this.router.navigate(["busqueda/libros"]));
+    }
+  }
+
+  dialogUsuario(){
+    const dialogRef = this.dialog.open(DialogUsuarioComponent,
+      {
+        width: '80%',
+        data: null
+      }
+    );
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
 
 }

@@ -2,6 +2,9 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location } from '@angular/common';
+import { AydAppService } from '../_services/ayd-app.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogUsuarioComponent } from '../dialog-usuario/dialog-usuario.component';
 
 @Component({
   selector: 'app-navbar',
@@ -16,10 +19,14 @@ export class NavbarComponent implements OnInit {
   private toggleButton: any;
   private sidebarVisible: boolean;
 
+  busqueda;
+
   constructor(
     location: Location,
     private element: ElementRef,
-    private router: Router
+    private router: Router,
+    private aydAppService: AydAppService,
+    private dialog: MatDialog,  
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -130,6 +137,32 @@ export class NavbarComponent implements OnInit {
       }
     }
     return 'Dashboard';
+  }
+
+
+
+  buscarLibro(){
+    if(this.busqueda){
+      let b = {
+        titulo : this.busqueda
+      }
+
+      this.aydAppService.setBusquedaLibro(b);
+      this.router.navigated = false;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+      this.router.navigate(["busqueda/libros"]));
+    }
+  }
+
+  dialogUsuario(){
+    const dialogRef = this.dialog.open(DialogUsuarioComponent,
+      {
+        width: '80%',
+        data: null
+      }
+    );
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
 }
