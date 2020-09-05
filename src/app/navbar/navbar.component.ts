@@ -157,7 +157,7 @@ export class NavbarComponent implements OnInit {
   dialogUsuario(){
     const dialogRef = this.dialog.open(DialogUsuarioComponent,
       {
-        width: '50%',
+        width: '80%',
         data: null
       }
     );
