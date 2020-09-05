@@ -6,7 +6,6 @@ import { AydAppService } from '../_services/ayd-app.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogUsuarioComponent } from '../dialog-usuario/dialog-usuario.component';
 
-declare var swal: any;
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -164,27 +163,6 @@ export class NavbarComponent implements OnInit {
     );
     dialogRef.afterClosed().subscribe(result => {
     });
-  }
-
-  salir(){
-    swal.fire({
-      title: 'Esta seguro?',
-      text: "Salir del Sistema!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si!',
-      cancelButtonText: 'No!'
-    }).then((result) => {
-      if (result.value) {
-        swal.fire(
-          'Salir!',
-          'Salio Exitosamente',
-          'success'
-        )
-      }
-    })
   }
 
 }
